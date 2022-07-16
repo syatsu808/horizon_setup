@@ -32,6 +32,7 @@ Function download_packages {
 	Add-Content $logfile "`nDownloading Zoom VDI"
 	Start-Sleep -s 600
 	Restart-Service -name 'Windows Installer' -Force
+	Restart-Computer -Force
 	
 	
 }
