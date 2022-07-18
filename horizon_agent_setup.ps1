@@ -41,8 +41,7 @@ Function install_horizon_agent {
     Add-Content $logfile "`nInstalling All Horizon Agent Components..."
 	Restart-Service -name 'Windows Installer' -Force
 	Start-Sleep -s 30
-    cd C:\Horizon_Setup
-	cmd.exe /C '.\VMware-Horizon-Agent-x86_64-2111.1-8.4.0-19066669.exe /s /v" /qn ADDLOCAL=ALL"'
+	cmd.exe /C 'C:\Horizon_Setup\VMware-Horizon-Agent-x86_64-2111.1-8.4.0-19066669.exe /s /v" /qn ADDLOCAL=ALL"'
 	Start-Sleep -s 300
 }
 
@@ -50,8 +49,7 @@ Function install_horizon_directconnect {
 	Add-Content $logfile "`nInstalling Horizon Direct Connect Component..."
 	Restart-Service -name 'Windows Installer' -Force
 	Start-Sleep -s 30
-    cd C:\Horizon_Setup
-    cmd.exe /C '.\VMware-Horizon-Agent-Direct-Connection-x86_64-8.4.0-18964730.exe /s /v" /qn LISTENPORT=443 MODIFYFIREWALL=1"'
+    cmd.exe /C 'C:\Horizon_Setup\VMware-Horizon-Agent-Direct-Connection-x86_64-8.4.0-18964730.exe /s /v" /qn LISTENPORT=443 MODIFYFIREWALL=1"'
     Start-Sleep -s 300
 }
 
@@ -59,8 +57,7 @@ Function cleanup_horizon_installation {
     Add-Content $logfile "`nRemoving un-needed Horizon Agent Components..."
 	Restart-Service -name 'Windows Installer' -Force
 	Start-Sleep -s 30
-    cd C:\Horizon_Setup
-    cmd.exe /C '.\VMware-Horizon-Agent-x86_64-2111.1-8.4.0-19066669.exe /s /v" /qn REMOVE=GEOREDIR,PerfTracker,SdoSensor,SerialPortRedirection,SmartCard,VMWMediaProviderProxy"'
+    cmd.exe /C 'C:\Horizon_Setup\VMware-Horizon-Agent-x86_64-2111.1-8.4.0-19066669.exe /s /v" /qn REMOVE=GEOREDIR,PerfTracker,SdoSensor,SerialPortRedirection,SmartCard,VMWMediaProviderProxy"'
     Start-Sleep -s 300
 }
 
@@ -68,7 +65,6 @@ Function install_zoom_vdi {
     Add-Content $logfile "`nInstalling Zoom VDI..."
     Restart-Service -name 'Windows Installer' -Force
 	Start-Sleep -s 30
-    cd C:\Horizon_Setup
 	msiexec /i "C:\Horizon_Setup\ZoomInstallerVDI.msi" /quiet /qn /norestart /log C:\Horizon_Setup\Zoom_install.log
 	Start-Sleep -s 300
 }
